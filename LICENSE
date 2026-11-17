@@ -1,0 +1,101 @@
+HYPERWRITE AUTOCOMPLETE CLI LICENSE
+
+Licensor: OthersideAI, Inc. ("HyperWrite").
+Copyright (c) 2026 OthersideAI, Inc. All rights reserved.
+
+1. Scope
+
+"CLI" means HyperWrite's code and documentation distributed in the
+@hyperwrite/autocomplete-cli package, including modified copies of that code.
+"Service" means the HyperWrite autocomplete API operated by HyperWrite,
+including development endpoints expressly provided or authorized by HyperWrite.
+"You" means the individual or organization using the CLI.
+
+This license covers the CLI only. It does not license HyperWrite's server code,
+models, other products, or your application. Third-party components identified
+under separate licenses remain governed by those licenses.
+
+2. Permitted use
+
+Subject to these terms, HyperWrite grants you a non-exclusive, worldwide,
+royalty-free copyright license to inspect, copy, use, modify, compile, minify,
+and bundle the CLI to integrate the Service into your own applications,
+including commercial applications you sell or operate for customers.
+
+You may deliver the CLI, modified or unmodified, as an integrated part of your
+application, in source or compiled form, including browser bundles, mobile or
+desktop packages, and application deployments through hosting providers or
+app stores. Your end users may run those copies as part of your application.
+Charging for your application is permitted.
+
+You may share CLI copies privately with employees and contractors working on
+your application and use private build systems, artifact stores, and package
+mirrors for that work. They may use those copies only for your permitted
+integration, and you remain responsible for their compliance.
+
+You may use local mocks and fixed test fixtures instead of the Service for
+integration development, automated tests (including CI), and demonstrations. This exception
+does not permit a replacement production inference service.
+
+3. Restrictions
+
+Use the CLI's autocomplete functionality only with the Service, except for
+the local testing exception above. Do not adapt or use the CLI, or substantial
+parts derived from it, to obtain autocomplete predictions from another
+inference provider, a self-hosted model, or a replacement autocomplete service.
+
+Do not sell, license, publish, or distribute the CLI as a standalone library,
+CLI, or developer service, whether modified or unmodified. Distribution inside
+your application under section 2 and private sharing for that integration are
+permitted; a nominal application wrapper does not authorize CLI redistribution.
+Do not grant recipients broader rights in HyperWrite's CLI code than these
+terms allow. Separate written permission from HyperWrite may authorize other
+uses.
+
+These restrictions apply to use of this CLI and its derivatives. They do not
+prevent your application from using other AI providers for assistant replies
+or other features that do not use this CLI. They do not restrict independently
+written software that does not incorporate HyperWrite's CLI code.
+
+4. Notices and ownership
+
+Preserve this license and applicable copyright and third-party notices in
+source distributions. For compiled or minified distributions, include them
+in accompanying license materials accessible to recipients. No on-screen
+HyperWrite branding is required. Identify your modifications without implying
+that HyperWrite authored or endorses them.
+
+HyperWrite retains its rights in the original CLI. You retain your rights in
+your application and original modifications; this license does not assign them
+to HyperWrite or require you to publish them. Copies of modified HyperWrite
+code remain subject to these terms. Rights under separate third-party licenses
+are not reduced by this license. No trademark rights are granted.
+
+5. API access and service terms
+
+This license grants no API credentials, inference allowance, or promise of
+free service, support, or continued availability. API access requires separate
+authorization from HyperWrite. Any service agreement actually entered into
+with you governs that service; no unprovided service terms are incorporated
+here. This license imposes no telemetry or customer-data collection obligation.
+
+6. Termination
+
+A material breach of this license terminates its permissions. You must then
+stop using and distributing the CLI and remove or disable it in deployments
+you control, unless HyperWrite authorizes continued use in writing. You may
+retain archival copies required by law, without operational use. Termination
+affects CLI permissions only, not your rights in independent application code.
+Sections 3 through 7 survive as needed to give them effect.
+
+7. Warranty and liability
+
+To the extent allowed by law, the CLI is supplied without warranties,
+including warranties of fitness, merchantability, or non-infringement.
+HyperWrite does not promise error-free operation or compatibility with every
+application. To the extent allowed by law, HyperWrite is not liable for
+indirect or consequential loss arising from use of the CLI. Nothing here
+excludes liability or rights that applicable law does not allow parties to
+exclude, or overrides express commitments in a separate signed agreement.
+
+Contact: support@hyperwrite.ai
