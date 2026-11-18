@@ -25,7 +25,7 @@ English; test other languages and mobile keyboards explicitly.
 
 Requires Node.js 22+, Git, the target app's normal package manager and a POSIX
 filesystem (macOS, Linux or WSL). Native Windows private-key storage is not
-supported. For monorepos, install SDK 0.5.3 with the workspace's package manager,
+supported. For monorepos, install SDK 0.5.5 with the workspace's package manager,
 then use `init --skip-install` in the app directory.
 
 ```sh
@@ -49,11 +49,17 @@ installer. The browser can be on a different computer. The process saves the
 server key privately; do not paste it into chat or a command argument. If the
 connection response is uncertain, inspect existing keys before creating another.
 
-The owner provides the real HTTPS production origin and total app MAU. Free is
-$0/month below 50,000 total-app MAU. At 50,000 or more, paid Enterprise activation
-is required: https://autocomplete.dev/#pricing. Separate request/concurrency
-limits protect the service. Dashboard Autocomplete active-user counts do not
-replace the total-app MAU declaration.
+The owner provides the real HTTPS production origin. New accounts start with
+$100 in nonexpiring autocomplete.dev credits, or $500 total through Freebuff,
+with no card. At $1 per million aggregate generated output tokens, these are
+100M and 500M tokens. Input is included; all candidates count once, including
+ones discarded during ranking. A 20-candidate request averaging 8 tokens uses
+160 tokens. Do not invent referral attribution. Use the actual referral link
+in the signup browser and confirm the server-selected offer before enrollment.
+Existing customer terms remain; new credit accounts have no MAU eligibility gate.
+Separate request/concurrency limits apply. At exhaustion the owner can request
+Startup/Beta credits; no checkout or automatic billing is available yet.
+See https://autocomplete.dev/#pricing.
 
 For an already configured project, reuse the existing private backend key.
 Set these **server-side** environment values:
@@ -142,6 +148,7 @@ useEffect(() => {
   messages={messages}
   contextKey={`${userId}:${conversationId}`}
   getSuggestions={client.getSuggestions}
+      getAvailability={client.getAvailability}
 >
   <textarea value={draft} onChange={event => setDraft(event.target.value)} />
 </Autocomplete>
