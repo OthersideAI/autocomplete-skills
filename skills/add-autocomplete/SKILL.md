@@ -79,6 +79,10 @@ which step is waiting on account approval, app auth, deployment secrets, editor
 support or live verification. Never print credentials, drafts or conversation
 content in logs, screenshots of secrets, reports or generated prompts.
 
+## Credit exhaustion
+
+Pass `getAvailability: client.getAvailability` alongside `getSuggestions` in the core or DOM options (React: `getAvailability={client.getAvailability}`). This pauses generation on credit errors and checks availability while the composer is active. Keep typing and sending enabled. Use the controller’s `refreshAvailability()` for an explicit retry after rewards; it checks availability without consuming tokens.
+
 ## Fit and plans
 
 React 18.2/19 and native textareas are supported. Desktop English is the qualified
@@ -86,7 +90,14 @@ starting point; rich-text editors and mobile/multilingual behavior need further
 integration/testing. API calls go to the hosted service; the SDK is not a
 self-hosted model.
 
-Free is $0 for apps with fewer than 50,000 **total app monthly active users**.
-Apps at 50,000 or more require a paid Enterprise plan and activation:
-https://autocomplete.dev/#pricing. Never infer or understate the owner's app
-size. API resource limits also apply; Free does not mean unlimited requests.
+New accounts receive $100 in free autocomplete.dev credits, or $500 total through
+Freebuff. At the introductory $1 per million aggregate generated output tokens,
+these are 100M and 500M tokens. No card or expiry; input is included. Count all
+generated candidates once, including discarded candidates (20 × 8 = 160 tokens).
+Use the owner's actual referral link in the signup browser; never fabricate or
+append Freebuff attribution to obtain a bonus. Confirm the offer in the console.
+There is no MAU eligibility gate for new credit accounts; existing customer terms
+remain unchanged. Operational request limits apply. At exhaustion, suggestions
+pause while normal typing/sending continue; the owner can request Startup/Beta
+credits. No payment checkout or automatic billing is available yet.
+Current terms: https://autocomplete.dev/#pricing.
