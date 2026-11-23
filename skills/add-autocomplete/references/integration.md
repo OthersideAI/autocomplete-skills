@@ -44,18 +44,32 @@ The installer inspects this file as data; never source or execute it.
 
 `init` prepares the package, skill and configuration; the agent must still adapt
 the app. `connect` prints a browser approval URL and comparison code/fingerprint.
-The account owner signs in, creates or chooses their workspace and approves the
-installer. The browser can be on a different computer. The process saves the
+The account owner completes verified sign-in, reviews their project and approves
+the installer. The browser can be on a different computer. The process saves the
 server key privately; do not paste it into chat or a command argument. If the
 connection response is uncertain, inspect existing keys before creating another.
 
-The owner provides the real HTTPS production origin. New accounts start with
-$100 in nonexpiring autocomplete.dev credits, or $500 total through Freebuff,
+After verified sign-in, a new account automatically gets a personal project;
+no production website is required initially. The normal Overview, API keys, and
+Origins & settings remain the management interface. New projects include exactly
+`http://localhost:3000` and `http://localhost:5173`. Owners can rename a personal
+project in settings and add exact HTTPS production origins later with the same
+server-only key. Existing owners keep their project settings; check the saved
+origins rather than assuming the defaults are present.
+
+Inspect the app's actual codebase, dev-server configuration and deployment plan
+before choosing origins. Use localhost, production directly, or both as
+appropriate; starting locally is common, not mandatory. Infer the actual browser
+origin from that evidence and ask the owner only if it remains unclear. Never
+invent a website or assume the app uses a default port.
+
+New accounts start with $100 in nonexpiring autocomplete.dev credits, or $500
+total through Freebuff,
 with no card. At $1 per million aggregate generated output tokens, these are
 100M and 500M tokens. Input is included; all candidates count once, including
 ones discarded during ranking. A 20-candidate request averaging 8 tokens uses
 160 tokens. Do not invent referral attribution. Use the actual referral link
-in the signup browser and confirm the server-selected offer before enrollment.
+in the signup browser and confirm the offer shown in the console.
 Existing customer terms remain; new credit accounts have no MAU eligibility gate.
 Separate request/concurrency limits apply. At exhaustion the owner can request
 Startup/Beta credits; no checkout or automatic billing is available yet.
@@ -69,11 +83,21 @@ AUTOCOMPLETE_API_KEY=YOUR_SERVER_ONLY_KEY
 AUTOCOMPLETE_WEBSITE_ORIGIN=http://localhost:3000
 ```
 
-Use the actual frontend origin in each environment; production uses its approved
-HTTPS origin. Both localhost:3000 and localhost:5173 are included by self-serve
-onboarding. Different ports, localhost vs 127.0.0.1, and apex vs www are distinct
-origins. The same key can serve the approved origins. Configure deployment secrets
-privately in the hosting provider too; a local env file does not deploy them.
+The example uses localhost only as an illustration. Set the actual approved
+frontend origin per environment: scheme, hostname and port when needed, without
+any path, trailing slash, query, fragment or wildcard. Public origins must use
+HTTPS; HTTP is allowed only for explicitly configured, supported localhost
+origins. Different ports, `localhost` vs `127.0.0.1`, and apex vs `www` are distinct;
+approval of one does not authorize another. Add necessary supported origins in
+Origins & settings without removing existing entries. The same server-only key
+can serve the approved origins. Saving an origin only authorizes SDK use there;
+you still need the backend session route and SDK wired into the real composer.
+
+Load the private env file in the local backend when working locally. Configure
+deployment secrets privately in the hosting provider when deploying; a local
+file does not deploy them. If frontend and backend run on different local ports,
+configure the dev server to proxy the session route to the backend. The configured
+origin is the frontend address in the browser, not the backend's address.
 
 ## Backend: authenticated session broker
 
