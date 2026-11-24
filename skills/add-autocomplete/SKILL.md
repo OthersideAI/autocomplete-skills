@@ -87,8 +87,8 @@ Then test the actual app in each selected local/production environment:
 signed-out session requests are denied; a signed-in user can receive a gray
 suggestion; Tab accepts one word; send still works;
 logout clears session/suggestions; empty responses, throttling and network errors
-leave typing functional. For a first-message smoke, type at least 40 characters
-followed by a space. Use a mock first and clearly distinguish it from a real API
+leave typing functional. For a first-message smoke, type a word followed by a space
+(for example, `Hello `). SDK 0.5.6 has no extra first-message character minimum. Use a mock first and clearly distinguish it from a real API
 check. Real suggestions consume the project's allowance.
 
 Report the feature working only when these app checks pass. Otherwise identify

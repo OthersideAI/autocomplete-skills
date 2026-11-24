@@ -25,7 +25,7 @@ English; test other languages and mobile keyboards explicitly.
 
 Requires Node.js 22+, Git, the target app's normal package manager and a POSIX
 filesystem (macOS, Linux or WSL). Native Windows private-key storage is not
-supported. For monorepos, install SDK 0.5.5 with the workspace's package manager,
+supported. For monorepos, install SDK 0.5.6 with the workspace's package manager,
 then use `init --skip-install` in the app directory.
 
 ```sh
@@ -209,9 +209,10 @@ own login or editor integration. Report actual checks separately:
 - Account/chat switches and logout clear incompatible suggestions/session state.
 - Mocked timeout, 429 and empty-result cases leave the composer working.
 
-For a first message, type at least 40 characters followed by a space. An assistant
-welcome is not a previous user turn. Later turns need real earlier user messages
-in `messages`. A valid API response may contain no suggestion; do not call that a
+For a first message, type a word followed by a space (for example, `Hello `).
+SDK 0.5.6 defaults to no extra first-message character minimum; empty or
+whitespace-only drafts do not request suggestions. Include real earlier user
+messages in `messages` to supply conversation context. A valid API response may contain no suggestion; do not call that a
 successful visible-integration test. Test with synthetic text and keep all drafts,
 conversation content, session tokens and keys out of logs and durable reports.
 A real API check consumes the project's allowance; deterministic mocks do not.
