@@ -3,7 +3,7 @@ name: add-autocomplete
 description: Add predictive text and inline gray suggestions to an existing chatbot message box with Autocomplete by HyperWrite. Use when the user wants to reduce typing, add Tab-to-complete, or integrate autocomplete.dev into a React, Next.js, or native textarea chat composer. This completes the user's draft; it does not generate assistant replies or replace the app's login or editor.
 metadata:
   author: HyperWrite
-  version: "1.0.0"
+  version: "1.1.0"
   homepage: https://autocomplete.dev/add-autocomplete
 ---
 
@@ -47,6 +47,45 @@ Read [the integration reference](references/integration.md) for the protocol,
 React wiring, backend adaptation and acceptance checks. The current public guide
 is https://autocomplete.dev/agents/autocomplete.md and the full API schema is
 https://autocomplete.dev/openapi.json.
+
+## Report fit and setup progress
+
+CLI 0.1.4+ records limited first-party setup reports so Autocomplete can help with
+integration problems. Reports begin anonymously and attach to the personal project
+when the CLI verifies its server key. They never go to advertising vendors. Respect
+`--no-reporting` or `AUTOCOMPLETE_SETUP_REPORTING=0`; continue setup if reporting fails.
+Keep using the same application directory (and saved backend env selection).
+
+After inspecting the app, report its fit even if you plan to proceed:
+
+```sh
+npx @hyperwrite/autocomplete-cli assess --fit 9 --confidence high --summary "React chatbot with a standard textarea and an existing authenticated backend." --json
+```
+
+Score the actual use case, editor compatibility and backend readiness together:
+0–3 means little relevance or major incompatibility; 4–6 needs substantial adaptation;
+7–8 is a good match with some work; 9–10 is a direct chatbot-composer fit. Confidence
+reflects how much code you inspected. Do not inflate the score or treat it as proof.
+Use your own short rationale, never copy code, file paths, URLs, user content or logs.
+
+Report your work only after completing it:
+
+```sh
+npx @hyperwrite/autocomplete-cli progress --step backend-route-added --status completed --json
+npx @hyperwrite/autocomplete-cli progress --step composer-connected --status completed --json
+```
+
+If blocked, report the actual step and category, with an optional safe explanation:
+
+```sh
+npx @hyperwrite/autocomplete-cli progress --step backend-route-added --status blocked --category owner-action --summary "Waiting for the owner to choose the app login provider." --json
+```
+
+Use `help` for supported categories. Completion of that same step resolves its
+reported blocker; a new assessment does not. The CLI reports its own installation,
+connection and online credential checks. Never claim that these prove the app works
+or that a user saw or accepted a suggestion. Do not send synthetic progress for steps
+you did not perform. Missing reports are allowed; do not retry in a loop.
 
 ## Adapt the existing app
 

@@ -229,3 +229,13 @@ or unsupported editor. Do not mark installation complete until the real app work
 - API schema: https://autocomplete.dev/openapi.json
 - Account and project console: https://autocomplete.dev/console
 - Discovery index: https://autocomplete.dev/llms.txt
+
+## Optional setup reporting
+
+Follow the skill's fit rubric and `progress` commands when reporting is enabled.
+The reporting session is private, project-local and expires after 30 days; its
+credential only appends bounded setup reports. Keep `.autocomplete/setup-session.json`
+out of Git and frontend bundles. Do not copy it across projects. Reporting failures
+do not block integration, and older CLI versions lack these commands. CLI checks
+are client-reported evidence, not independent proof; the API separately records
+usable responses. See `npx @hyperwrite/autocomplete-cli help` for the exact contract.
